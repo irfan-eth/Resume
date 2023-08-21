@@ -5,11 +5,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST["subject"];
     $message = $_POST["message"];
 
-    $to = "irfanarif.eth#gmail.com"; // Your email address
+    $to = "irfanarif.eth@gmail.com"; // Your email address
     $headers = "From: $email";
 
-    mail($to, $subject, $message, $headers);
-
-    echo "Message sent successfully.";
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Message sent successfully.";
+    } else {
+        echo "Error sending message.";
+    }
+} else {
+    echo "Invalid request method.";
 }
 ?>
